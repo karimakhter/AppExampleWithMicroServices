@@ -27,10 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'my_app_backend',
-    'my_app_backend.com',
+    'app_backend',
+    'app_backend.com',
     '172.25.0.5',
-    'my_app_db',
+    'app_db',
     'docker.for.mac.localhost'
 ]
 # Application definition
@@ -189,4 +189,5 @@ LOGGING = {
 }
 
 AUTH_PROFILE_MODULE = 'products.MyUser'
+
 AUTH_USER_MODEL = 'products.MyUser'
