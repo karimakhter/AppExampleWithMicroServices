@@ -15,16 +15,19 @@ class MyUserManager(BaseUserManager):
         if not username:
             raise ValueError('Users must have an username')
 
-        user = self.model(username =username)
+        user = self.model(username = username,
+                          password = password,
+                          )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username):
+    def create_superuser(self, username,password):
 
         user = self.create_user(
-            username = username
+            username = username,
+            password = password,
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -33,8 +36,8 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser):
     username = models.CharField(max_length=200, unique=True)
-    firstname = models.CharField(max_length=200,default=None)
-    lastname = models.CharField(max_length=200,default=None)
+    firstname = models.CharField(max_length=200,default="")
+    lastname = models.CharField(max_length=200,default="")
     email = models.EmailField( max_length=255)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
