@@ -34,7 +34,7 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_ROOT_HOST: app_db
-    command: bash -c "sleep 10  && python manage.py runserver 0.0.0.0:8008"
+    command: bash -c "sleep 10  && python /app/backend/manage.py runserver 0.0.0.0:8008"
     ports:
       - 8008:8008
     networks:
